@@ -18,16 +18,23 @@ impl Logger {
     }
 
     /// Update logger to output logs to a file.
-    pub fn output_to_file(&mut self) {
-        Self::output_to_file_impl(self);
+    pub fn output_to_file(&mut self, file_name: Option<String>) {
+        Self::output_to_file_impl(self, file_name);
     }
 
-    fn output_to_file_impl(&mut self) {
+    fn output_to_file_impl(&mut self, file_name: Option<String>) {
         let date: String = chrono::Local::now().format("%Y-%m-%d_%H:%M:%S").to_string();
         fs::create_dir_all("logs").unwrap();
-        let file_path: Option<String> = Some(format!("logs/{}.log", date));
-        fs::File::create(file_path.clone().unwrap()).unwrap();
-        self.path = file_path;
+        if file_name.is_none() {
+            let file_path: Option<String> = Some(format!("logs/{}.log", date));
+            fs::File::create(file_path.clone().unwrap()).unwrap();
+            self.path = file_path;
+        } else {
+            let file_name: String = file_name.unwrap();
+            let file_path: Option<String> = Some(format!("logs/{}.log", file_name));
+            fs::File::create(file_path.clone().unwrap()).unwrap();
+            self.path = file_path;
+        }
     }
 
     /// Log an info message.

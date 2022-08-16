@@ -5,13 +5,12 @@
 #### Logging to a file and console
 
 ```rust
-mod lib;
-
-use lib::Log;
+use lib::Logger;
 
 fn main() {
-    let mut logger: Log = Log::new();
-    logger.output_to_file();
+    let mut logger: Logger = Logger::new();
+    logger.output_to_file(None);
+
     logger.info("Hello, world!");
     logger.warn("Hello, world!");
     logger.error("Hello, world!");
@@ -22,12 +21,10 @@ fn main() {
 #### Logging to just the console
 
 ```rust
-mod lib;
-
-use lib::Log;
+use lib::Logger;
 
 fn main() {
-    let logger: Log = Log::new();
+    let logger: Logger = Logger::new();
     logger.info("Hello, world!");
     logger.warn("Hello, world!");
     logger.error("Hello, world!");
