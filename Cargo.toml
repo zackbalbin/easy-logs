@@ -1,8 +1,8 @@
 [package]
 name = "easy-logs"
-version = "0.1.3"
+version = "0.1.4"
 edition = "2021"
-description = "A simple library for logging."
+description = "A simple and lightweight rust logging library."
 documentation = "https://docs.rs/easy-logs"
 repository = "https://github.com/zackbalbin/easy-logs"
 readme = "README.md"

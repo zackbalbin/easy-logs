@@ -1,5 +1,7 @@
 # Easy Logging Library
 
+A simple and lightweight rust logging library.
+
 ### Examples
 
 #### Logging to a file and console
