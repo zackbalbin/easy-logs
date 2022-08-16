@@ -9,22 +9,24 @@ pub struct Log {
 
 impl Log {
     /// Create a new logger.
-    pub fn new(output_to_file: bool)  -> Log {
+    pub fn new()  -> Log {
+        let log: Log = Log {
+            path: None,
+        };
+        return log;
+    }
+
+    /// Update logger to output logs to a file.
+    pub fn output_to_file(&mut self) {
+        Self::output_to_file_impl(self);
+    }
+
+    fn output_to_file_impl(&mut self) {
         let date: String = chrono::Local::now().format("%Y-%m-%d_%H:%M:%S").to_string();
-        if output_to_file {
-            fs::create_dir_all("logs").unwrap();
-            let path: Option<String> = Some(format!("logs/{}.log", date));
-            fs::File::create(path.clone().unwrap()).unwrap();
-            let log: Log = Log {
-                path: path.clone(),
-            };
-            return log;
-        } else {
-            let log: Log = Log {
-                path: None,
-            };
-            return log;
-        }
+        fs::create_dir_all("logs").unwrap();
+        let file_path: Option<String> = Some(format!("logs/{}.log", date));
+        fs::File::create(file_path.clone().unwrap()).unwrap();
+        self.path = file_path;
     }
 
     /// Log an info message.
