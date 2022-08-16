@@ -1,4 +1,4 @@
-# Simple Logging Library
+# Easy Logging Library
 
 ### Example
 

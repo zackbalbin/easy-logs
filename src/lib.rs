@@ -1,11 +1,14 @@
 use std::{io::Write, fs};
 use colored::{Colorize, ColoredString};
 
+
+/// Easy Logger
 pub struct Log {
     path: Option<String>,
 }
 
 impl Log {
+    /// Create a new logger.
     pub fn new(output_to_file: bool)  -> Log {
         let date: String = chrono::Local::now().format("%Y-%m-%d_%H:%M:%S").to_string();
         if output_to_file {
@@ -24,6 +27,7 @@ impl Log {
         }
     }
 
+    /// Log an info message.
     pub fn info(&self, message: &str) {
         let date: String = chrono::Utc::now().format("%m-%d-%Y [%H:%M:%S.%f]").to_string();
         let info_text: ColoredString = "[INFO] ".green().bold();
@@ -40,6 +44,7 @@ impl Log {
         println!("{}", &message_text);
     }
 
+    /// Log a warning message.
     pub fn warn(&self, message: &str) {
         let date: String = chrono::Utc::now().format("%m-%d-%Y [%H:%M:%S.%f]").to_string();
         let info_text: ColoredString = "[WARN] ".yellow().bold();
@@ -56,6 +61,7 @@ impl Log {
         println!("{}", &message_text);
     }
 
+    /// Log an error message.
     pub fn error(&self, message: &str) {
         let date: String = chrono::Utc::now().format("%m-%d-%Y [%H:%M:%S.%f]").to_string();
         let info_text: ColoredString = "[ERROR] ".red().bold();
@@ -72,6 +78,7 @@ impl Log {
         println!("{}", &message_text);
     }
 
+    /// Log a debug message.
     pub fn debug(&self, message: &str) {
         let date: String = chrono::Utc::now().format("%m-%d-%Y [%H:%M:%S.%f]").to_string();
         let info_text: ColoredString = "[DEBUG] ".blue().bold();
