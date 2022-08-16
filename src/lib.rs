@@ -32,7 +32,7 @@ impl Log {
     /// Log an info message.
     pub fn info(&self, message: &str) {
         let date: String = chrono::Utc::now().format("%m-%d-%Y [%H:%M:%S.%f]").to_string();
-        let info_text: ColoredString = "[INFO] ".green().bold();
+        let info_text: &str = "[INFO] ";
         let message_text: String = format!("{} {} {}", date, info_text, message);
         if self.path.is_some() {
             let mut file = fs::OpenOptions::new()
@@ -43,13 +43,15 @@ impl Log {
             let log_text: String = format!("{}\n", message_text);
             file.write_all(log_text.as_bytes()).unwrap();
         }
+        let info_text: ColoredString = info_text.green().bold();
+        let message_text: String = format!("{} {} {}", date, info_text, message);
         println!("{}", &message_text);
     }
 
     /// Log a warning message.
     pub fn warn(&self, message: &str) {
         let date: String = chrono::Utc::now().format("%m-%d-%Y [%H:%M:%S.%f]").to_string();
-        let info_text: ColoredString = "[WARN] ".yellow().bold();
+        let info_text: &str = "[WARN] ";
         let message_text: String = format!("{} {} {}", date, info_text, message);
         if self.path.is_some() {
             let mut file = fs::OpenOptions::new()
@@ -60,13 +62,15 @@ impl Log {
             let log_text: String = format!("{}\n", message_text);
             file.write_all(log_text.as_bytes()).unwrap();
         }
+        let info_text: ColoredString = info_text.yellow().bold();
+        let message_text: String = format!("{} {} {}", date, info_text, message);
         println!("{}", &message_text);
     }
 
     /// Log an error message.
     pub fn error(&self, message: &str) {
         let date: String = chrono::Utc::now().format("%m-%d-%Y [%H:%M:%S.%f]").to_string();
-        let info_text: ColoredString = "[ERROR] ".red().bold();
+        let info_text: &str = "[ERROR] ";
         let message_text: String = format!("{} {} {}", date, info_text, message);
         if self.path.is_some() {
             let mut file = fs::OpenOptions::new()
@@ -77,13 +81,15 @@ impl Log {
             let log_text: String = format!("{}\n", message_text);
             file.write_all(log_text.as_bytes()).unwrap();
         }
+        let info_text: ColoredString = info_text.red().bold();
+        let message_text: String = format!("{} {} {}", date, info_text, message);
         println!("{}", &message_text);
     }
 
     /// Log a debug message.
     pub fn debug(&self, message: &str) {
         let date: String = chrono::Utc::now().format("%m-%d-%Y [%H:%M:%S.%f]").to_string();
-        let info_text: ColoredString = "[DEBUG] ".blue().bold();
+        let info_text: &str = "[DEBUG] ";
         let message_text: String = format!("{} {} {}", date, info_text, message);
         if self.path.is_some() {
             let mut file = fs::OpenOptions::new()
@@ -94,6 +100,8 @@ impl Log {
             let log_text: String = format!("{}\n", message_text);
             file.write_all(log_text.as_bytes()).unwrap();
         }
+        let info_text: ColoredString = info_text.blue().bold();
+        let message_text: String = format!("{} {} {}", date, info_text, message);
         println!("{}", &message_text);
     }
 }
