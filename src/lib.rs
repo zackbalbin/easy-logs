@@ -3,14 +3,15 @@ use colored::{Colorize, ColoredString};
 
 
 /// Easy Logger
-pub struct Log {
+#[derive(Debug, Clone)]
+pub struct Logger {
     path: Option<String>,
 }
 
-impl Log {
+impl Logger {
     /// Create a new logger.
-    pub fn new()  -> Log {
-        let log: Log = Log {
+    pub fn new()  -> Logger {
+        let log: Logger = Logger {
             path: None,
         };
         return log;
