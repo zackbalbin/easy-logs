@@ -1,0 +1,16 @@
+[package]
+name = "easy-logs"
+version = "0.0.1"
+edition = "2021"
+description = "A simple library for logging."
+documentation = "https://docs.rs/easy-logs"
+repository = "https://github.com/zackbalbin/easy-logs"
+readme = "README.md"
+homepage = "https://zackbalbin.com/"
+license = "MIT"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+colored = "2"
+chrono = "0.4.22"
